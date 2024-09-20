@@ -16,15 +16,8 @@ The **Global Search Plugin** adds a powerful global search functionality to Kanb
 
 ### Installation
 
-1. **Download the Plugin**:
-   - Clone this repository into the `plugins` folder of your Kanboard installation:
-     ```bash
-     cd /path/to/kanboard/plugins
-     git clone https://github.com/kenlog/global-search-kanboard.git Globalsearch
-     ```
-
-2. **Enable the Plugin**:
-   - Go to the Kanboard settings under the "Plugins" section, and ensure that the "Global Search" plugin is enabled.
+  **Plugin Manager**
+  - Go to the Kanboard settings under the "Plugins" section, install the plugin in one click.
 
 ### Configuration
 After installing the plugin, no further configuration is required. The global search functionality is automatically added to the top menu, and you can start using it immediately.
