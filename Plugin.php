@@ -43,7 +43,7 @@ class Plugin extends Base
 
     public function getPluginName()
     {
-        return 'Ricerca Globale';
+        return t('Global search');
     }
 
     public function getPluginDescription()
