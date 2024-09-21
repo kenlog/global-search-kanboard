@@ -1,5 +1,10 @@
 # Global Search Plugin for Kanboard
 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)]()
+[![GitHub](https://img.shields.io/github/license/kenlog/global-search-kanboard?style=flat-square)](https://github.com/kenlog/global-search-kanboard/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/kenlog/global-search-kanboard?style=flat-square)](https://github.com/kenlog/global-search-kanboard/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/kenlog/global-search-kanboard/total.svg)](https://github.com/kenlog/global-search-kanboard/releases)
+
 ### Description
 The **Global Search Plugin** adds a powerful global search functionality to Kanboard, allowing users to search for tasks, comments, and projects across all available projects they have access to. The search results are filtered by permissions, ensuring that users only see the content they are authorized to view. The search results can also be filtered to display only tasks, comments, or projects.
 
