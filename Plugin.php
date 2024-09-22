@@ -21,10 +21,11 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        // alternative hook "template:dashboard:show:after-filter-box"
-        $this->template->hook->attach('template:layout:top', 'globalsearch:global_search/search_form');
+        $this->template->hook->attach('template:header:dropdown', 'globalsearch:global_search/search_icon');
 
         $this->route->addRoute('/global_search', 'GlobalSearchController', 'search', 'Globalsearch');
+
+        $this->hook->on('template:layout:css', array('template' => 'plugins/Globalsearch/Assets/css/global-search.css'));
     }
 
     public function onStartup()
@@ -58,7 +59,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.0';
+        return '1.0.3';
     }
 
     public function getPluginHomepage()

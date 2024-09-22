@@ -29,7 +29,7 @@ class GlobalSearchController extends BaseController
         $filterComments = $this->request->getIntegerParam('filter_comments');
         $filterProjects = $this->request->getIntegerParam('filter_projects');
 
-        $results = $this->searchQuery($query, $filterTasks, $filterComments, $filterProjects);
+        $results = $this->searchQuery(trim($query), $filterTasks, $filterComments, $filterProjects);
 
         $this->response->html($this->helper->layout->app('Globalsearch:global_search/search', [
             'title' => t('Global search'),
@@ -46,50 +46,71 @@ class GlobalSearchController extends BaseController
     {
         $results = [];
 
-        if (!$this->userSession->isLogged()) {
+        if (!$this->userSession->isLogged() or empty($query)) {
             return $results;
         }
 
         $accessibleProjectIds = $this->projectPermissionModel->getProjectIds($this->userSession->getId());
 
-        if ($filterTasks && !empty($accessibleProjectIds)) {
-            $tasks = $this->db->table(TaskModel::TABLE)
-                ->beginOr()
-                ->ilike('title', '%' . $query . '%')
-                ->ilike('description', '%' . $query . '%')
-                ->closeOr()
-                ->in('project_id', $accessibleProjectIds)
-                ->desc('date_creation')
-                ->findAll();
+        $keywords = array_filter(explode(' ', $query));
 
+        if ($filterTasks && !empty($accessibleProjectIds)) {
+            $tasksQuery = $this->db->table(TaskModel::TABLE);
+
+            foreach ($keywords as $keyword) {
+                $tasksQuery->beginOr()
+                    ->ilike('title', '%' . $keyword . '%')
+                    ->ilike('description', '%' . $keyword . '%')
+                    ->closeOr();
+            }
+
+            $tasksQuery->in('project_id', $accessibleProjectIds)
+                ->desc('date_creation');
+
+            $tasks = $tasksQuery->findAll();
             $results = array_merge($results, $tasks);
         }
 
         if ($filterComments && !empty($accessibleProjectIds)) {
-            $comments = $this->db->table(CommentModel::TABLE)
-                ->join(TaskModel::TABLE, 'id', 'task_id')
-                ->ilike('comment', '%' . $query . '%')
-                ->in(TaskModel::TABLE . '.project_id', $accessibleProjectIds)
-                ->desc(CommentModel::TABLE . '.date_creation')
-                ->findAll();
+            $commentsQuery = $this->db->table(CommentModel::TABLE)
+                ->columns(
+                    CommentModel::TABLE . '.id AS comment_id',
+                    CommentModel::TABLE . '.task_id',
+                    CommentModel::TABLE . '.comment',
+                    CommentModel::TABLE . '.date_creation'
+                )
+                ->join(TaskModel::TABLE, 'id', 'task_id');
 
+            foreach ($keywords as $keyword) {
+                $commentsQuery->ilike('comment', '%' . $keyword . '%');
+            }
+
+            $commentsQuery->in(TaskModel::TABLE . '.project_id', $accessibleProjectIds)
+                ->desc(CommentModel::TABLE . '.date_creation');
+
+            $comments = $commentsQuery->findAll();
             $comments = array_map(function ($array) {
                 return [
+                    'comment_id' => $array['comment_id'],
                     'task_id' => $array['task_id'],
-                    'comment' => $array['comment']
+                    'comment' => $array['comment'],
+                    'date_creation' => $array['date_creation']
                 ];
             }, $comments);
-
             $results = array_merge($results, $comments);
         }
 
         if ($filterProjects && !empty($accessibleProjectIds)) {
-            $projects = $this->db->table(ProjectModel::TABLE)
-                ->ilike('name', '%' . $query . '%')
-                ->in('id', $accessibleProjectIds)
-                ->desc('id')
-                ->findAll();
+            $projectsQuery = $this->db->table(ProjectModel::TABLE);
 
+            foreach ($keywords as $keyword) {
+                $projectsQuery->ilike('name', '%' . $keyword . '%');
+            }
+
+            $projectsQuery->in('id', $accessibleProjectIds)
+                ->desc('id');
+
+            $projects = $projectsQuery->findAll();
             $results = array_merge($results, $projects);
         }
 
