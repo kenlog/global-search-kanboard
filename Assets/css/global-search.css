@@ -1,14 +1,22 @@
-.search-results-container strong {
-    color: #8d9498;
-}
+/**
+ * This file is part of the Kanboard GlobalSearch Plugin project.
+ *
+ *
+ * @package     Kanboard GlobalSearch Plugin
+ * @author      Valentino Pesce
+ * @copyright   2024 (c) Valentino Pesce
+ *
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-.navbar .fa-search {
+.search-results-container .navbar .fa-search {
     font-size: 16px;
     margin-right: 15px;
-    color: #fff;
 }
 
-.navbar .fa-search:hover {
+.search-results-container .navbar .fa-search:hover {
     color: #00a3d4;
 }
 
@@ -18,88 +26,63 @@
     padding-top: 20px;
 }
 
-.search-results-container i {
-    color: #8d9498;
-}
-
-.search-header {
+.search-results-container .search-header {
     padding: 5px;
     margin-bottom: 15px;
 }
 
-.search-bar {
+.search-results-container .search-header-fieldset {
+    width: 100%;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.search-results-container .search-bar {
+    text-align: center;
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.search-bar input[type="text"] {
+.search-results-container .search-bar input[type="text"] {
     flex-grow: 1;
     padding: 5px;
-    border-radius: 5px 20px 20px 5px;
-    font-size: 16px;
+    border-radius: 10px 10px 10px 10px;
 }
 
-.search-bar button {
+.search-results-container .search-bar button {
     padding: 7px 10px;
-    border-radius: 24px;
-    margin-left: 5px;
+    border-radius: 10px;
     margin-right: 3px;
 }
 
-.search-bar button i {
-    color: #00a3d4;
+.search-results-container .search-bar button i {
+    color: #36c;
 }
 
-.search-filters {
+.search-results-container .search-filters {
     margin-top: 10px;
     margin-bottom: 15px;
-    display: flex;
-    gap: 10px;
+    display: inline-flex;
 }
 
-.search-results-list {
+.search-results-container .search-results-list {
     list-style: none;
     padding-left: 0;
 }
 
-.search-result-item {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding: 20px;
-    border: 1px solid #e4e4e4;
-    border-radius: 10px;
-    background: #f9f9f9;
-    border-bottom: 2px solid #ddd;
-}
-
-.search-result-item a {
-    display: block;
-    font-size: 18px;
-    text-decoration: none;
-    margin-top: 5px;
-    margin-bottom: 3px;
-}
-
-.search-result-item p {
-    font-size: 14px;
-    color: #4d4d4d;
-    margin-bottom: 3px;
-}
-
-.search-result-item small {
-    font-size: 12px;
-    color: #888;
-}
-
-.search-mb-5 {
+.search-results-container .search-mb-5 {
     margin-bottom: 5px;
 }
 
-.search-mb-10 {
+.search-results-container .search-mb-10 {
     margin-bottom: 10px;
 }
 
-.search-p-5 {
+.search-results-container .search-p-5 {
     padding: 5px;
+}
+
+.search-results-container .p-25 {
+    padding: 25px;
 }
