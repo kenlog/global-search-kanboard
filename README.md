@@ -8,7 +8,11 @@
 ### Description
 The **Global Search Plugin** adds a powerful global search functionality to Kanboard, allowing users to search for tasks, comments, and projects across all available projects they have access to. The search results are filtered by permissions, ensuring that users only see the content they are authorized to view. The search results can also be filtered to display only tasks, comments, or projects.
 
-![global_search](https://github.com/user-attachments/assets/1cdc3869-c0b8-43b9-926a-184182f9b13e)
+___
+
+*Multi theme and responsive compatibility*
+![light](https://github.com/user-attachments/assets/bf5c1a1e-4b69-4502-8fb1-76e0651fa81a)
+![dark](https://github.com/user-attachments/assets/a666a0ec-06cc-48f4-bf67-d9c88672fde9)
 
 ### Features
 - Global search across tasks, comments, and projects.
