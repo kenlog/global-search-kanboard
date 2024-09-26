@@ -10,10 +10,6 @@ The **Global Search Plugin** adds a powerful global search functionality to Kanb
 
 ___
 
-*Multi theme and responsive compatibility*
-![light](https://github.com/user-attachments/assets/bf5c1a1e-4b69-4502-8fb1-76e0651fa81a)
-![dark](https://github.com/user-attachments/assets/a666a0ec-06cc-48f4-bf67-d9c88672fde9)
-
 ### Features
 - Global search across tasks, comments, and projects.
 - Filters to search only tasks, comments, or projects.
@@ -22,29 +18,27 @@ ___
 
 ### Requirements
 - Kanboard v1.2.32 or higher.
-- PHP 7.4 or higher.
 - A database supported by Kanboard (SQLite, MySQL, PostgreSQL).
 
 ### Installation
-
   **Plugin Manager**
   - Go to the Kanboard settings under the "Plugins" section, install the plugin in one click.
 
 ### Configuration
-After installing the plugin, no further configuration is required. The global search functionality is automatically added to the top menu, and you can start using it immediately.
-
-You can filter the search results by selecting specific options (tasks, comments, projects) and see the most recent items first.
+After installing the plugin, no additional configuration is required. The global search functionality is automatically added, allowing you to start using it immediately.
 
 ### Usage
-- Use the search bar located in the header of your Kanboard installation to search for tasks, comments, or projects.
+- To access the global search, click on the avatar icon in the top right corner, then select the Global Search option from the list.
 - You can apply filters to narrow down the results:
   - **Tasks**: Searches for tasks by title or description.
   - **Comments**: Searches for comments within tasks.
   - **Projects**: Searches for projects by name.
 - The search results are sorted by the most recent date and limited to the projects the user has permission to view.
 
-<!-- ### Screenshot
-![Global Search Plugin Screenshot](screen.png) -->
+### Screenshot
+![light](https://github.com/user-attachments/assets/e0ac942b-8cf6-4ec1-b68f-852c1473b491)
+Multi theme and responsive compatibility
+![dark](https://github.com/user-attachments/assets/a666a0ec-06cc-48f4-bf67-d9c88672fde9)
 
 ### Contributing
 Contributions are welcome! If you have ideas or find any bugs, feel free to open an issue or submit a pull request.
